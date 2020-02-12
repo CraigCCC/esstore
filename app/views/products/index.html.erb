@@ -8,6 +8,9 @@
 
 <% @products.each do |product| %>
 <div>
-    <%= product.name %>
+  <td><%= product.name %></td>
+  <td><%= link_to '查看', product_path(product) %></td>
+  <td><%= link_to '編輯', edit_product_path(product) %></td>
+  <td><%= link_to '刪除', product_path(product), method: :delete, data: { confirm: '確定要刪除' } %></td>
 </div>
 <% end %>
