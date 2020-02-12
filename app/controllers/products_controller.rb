@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product.destroy
+    redirect_to products_path, notice: '刪除成功'
   end
 
   private
