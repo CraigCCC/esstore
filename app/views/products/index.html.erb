@@ -1,0 +1,13 @@
+<h1>
+  書本列表
+  <%= link_to '新增', new_product_path%>
+</h1>
+
+
+<%= @products.count %>
+
+<% @products.each do |product| %>
+<div>
+    <%= product.name %>
+</div>
+<% end %>
