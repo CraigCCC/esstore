@@ -1,0 +1,37 @@
+<h3><%= @product.name %></h3>
+<table>
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= '售價' %></td>
+      <td><%= @product.list_price %></td>
+    </tr>
+    <tr>
+      <td><%= '特價' %></td>
+      <td><%= @product.sell_price %></td>
+    </tr>
+    <tr>
+      <td><%= 'SKU' %></td>
+      <td><%= @product.sku %></td>
+    </tr>
+    <tr>
+      <td><%= '產品狀態' %></td>
+      <td><%= @product.status %></td>
+    </tr>
+    <tr>
+      <td><%= '產品描述' %></td>
+      <td><%= @product.describle %></td>
+    </tr>
+
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>
+        <%= link_to '編輯', edit_product_path(@product) %>
+        <%= link_to '刪除', product_path(@product), method: :delete, data: { confirm: '確定要刪除' } %>
+        <%= link_to '回產品首頁', products_path %>
+      </td>
+    </tr>
+  </tfoot>
+</table>

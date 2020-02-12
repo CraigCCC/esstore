@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -21,11 +22,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to edit_product_path(@product), notice: '更新成功'
     else
@@ -38,11 +37,11 @@ class ProductsController < ApplicationController
 
   private
 
-  def find_production
-    @prodcut = Product.find(params[:id])
+  def find_product
+    @product = Product.find(params[:id])
   end
 
   def product_params
-    params.require(:product).permit(:name, :describe, :list_price, :sell_price, :sku, :status)
+    params.require(:product).permit(:name, :describle, :list_price, :sell_price, :sku, :status)
   end
 end
