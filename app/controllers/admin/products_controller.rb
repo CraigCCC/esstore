@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
   layout 'backend'
 
   def index
-    return @products = Product.sort_by_column(params[:order_by], params[:direction]) if params[:order_by]
+    return @products = Product.with_attached_images.sort_by_column(params[:order_by], params[:direction]) if params[:order_by]
 
     @products = Product.sort_by_created_at
   end
@@ -52,7 +52,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def find_product
-    @product = Product.find(params[:id])
+    @product = Product.with_attached_images.find(params[:id])
   end
 
   def product_params

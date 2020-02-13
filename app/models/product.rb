@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   #scope
   scope :sort_by_created_at, -> { order('created_at DESC') }
   scope :sort_by_column, ->(order_by, direction) { order("#{order_by} #{direction}") }
+  scope :available, -> { where.not(status: 'off_sell').where('list_price > 0') }
 
   private
 
