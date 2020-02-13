@@ -37,6 +37,12 @@ class ProductsController < ApplicationController
     redirect_to products_path, notice: '刪除成功'
   end
 
+  def destroy_image
+    image_blob = ActiveStorage::Attachment.find(params[:id])
+    image_blob.purge_later
+    redirect_back(fallback_location: edit_product_path)
+  end
+
   private
 
   def find_product
@@ -44,6 +50,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :describle, :list_price, :sell_price, :quantity, :sku, :status)
+    params.require(:product).permit(:name, :describle, :list_price, :sell_price, :quantity, :sku, :status, images: [])
   end
 end

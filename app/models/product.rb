@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   validate :list_price_greater_than_sell_price?
 
   # relationships
+  has_many_attached :images
+
   enum status: [:on_sell, :off_sell, :restocking]
 
   #scope

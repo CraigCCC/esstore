@@ -1,10 +1,28 @@
-<% if product.errors.any? %>
-  <% product.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+<div>
+  <% if product.errors.any? %>
+    <% product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <%= form_with model: product, local: true do |f| %>
+<div>
+  <% if product.images.attached?%>
+    <% product.images.each do |image| %>
+      <% if image.id.present? %>
+        <%= image_tag image, value: image.signed_id %>
+        <%= link_to '刪除圖片', destroy_image_product_path(image.id), method: :delete %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+  <div>
+    <%= f.label :images, '上傳圖檔' %>
+    <%= f.file_field :images, multiple: true, direct_upload: true %>
+  </div>
+
   <div>
     <%= f.label :name, '產品名稱' %>
     <%= f.text_field :name %>
