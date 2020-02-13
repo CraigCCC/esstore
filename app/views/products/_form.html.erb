@@ -11,7 +11,8 @@
   <% if product.images.attached?%>
     <% product.images.each do |image| %>
       <% if image.id.present? %>
-        <%= image_tag image, value: image.signed_id %>
+        <%= image_tag image %>
+        <%= f.hidden_field :images, multiple: true, value: image.signed_id %>
         <%= link_to '刪除圖片', destroy_image_product_path(image.id), method: :delete %>
       <% end %>
     <% end %>
