@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   enum status: [:on_sell, :off_sell, :restocking]
 
   #scope
+  scope :sort_by_created_at, -> { order('created_at DESC') }
+  scope :sort_by_column, ->(order_by, direction) { order("#{order_by} #{direction}") }
 
   private
 

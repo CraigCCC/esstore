@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    return @products = Product.sort_by_column(params[:order_by], params[:direction]) if params[:order_by]
+
+    @products = Product.sort_by_created_at
   end
 
   def show
