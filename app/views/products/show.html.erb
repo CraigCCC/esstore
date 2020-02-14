@@ -4,23 +4,29 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= '售價' %></td>
+      <td><%= t("prodcuts.image") %></td>
+      <% @product.images.each do |image| %>  
+        <td><%= cover_image_tag(image, 100, 100, multiple_image: true) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td><%= t("products.list_price") %></td>
       <td><%= @product.list_price %></td>
     </tr>
     <tr>
-      <td><%= '特價' %></td>
+      <td><%= t("products.sell_price") %></td>
       <td><%= @product.sell_price %></td>
     </tr>
     <tr>
-      <td><%= '數量' %></td>
+      <td><%= t("products.quantity") %></td>
       <td><%= @product.quantity %></td>
     </tr>
     <tr>
-      <td><%= '產品狀態' %></td>
+      <td><%= t("products.status.title") %></td>
       <td><%= @product.status %></td>
     </tr>
     <tr>
-      <td><%= '產品描述' %></td>
+      <td><%= t("products.describle") %></td>
       <td><%= @product.describle %></td>
     </tr>
 
@@ -28,7 +34,7 @@
   <tfoot>
     <tr>
       <td>
-        <%= link_to '回產品首頁', products_path %>
+        <%= link_to t("products.links.root_page"), products_path %>
       </td>
     </tr>
   </tfoot>

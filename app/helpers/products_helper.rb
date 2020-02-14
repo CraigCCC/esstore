@@ -1,7 +1,7 @@
 module ProductsHelper
   def sortable(column)
     direction = params[:direction] == 'DESC' ? 'ASC' : 'DESC'
-    link_to '價格', order_by: column, direction: direction
+    link_to t("products.#{column}"), order_by: column, direction: direction
   end
 
   def cover_image_tag(product, width, height, multiple_image: false)

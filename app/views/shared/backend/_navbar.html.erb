@@ -1,0 +1,17 @@
+<nav>
+  <% if current_user %>
+    <h1>
+      <%= link_to t('products.page_title.company'), root_path %>
+      Hello, <%= current_user.username %>! Here is a manager interface.
+    </h1>
+    <%= link_to t('products.links.to_frontend'), products_path %>
+    <%= link_to t('products.links.devise.edit'), edit_user_registration_path %>
+    <%= link_to t('products.links.devise.logout'), destroy_user_session_path, method: 'delete' %>
+  <% else %>
+    <h1>
+      <%= link_to t('products.page_title.company'), root_path %>
+    </h1>
+    <%= link_to t('products.links.devise.sign_up'), new_user_registration_path %>
+    <%= link_to t('products.links.devise.login'), new_user_session_path %>
+  <% end %>
+</nav>

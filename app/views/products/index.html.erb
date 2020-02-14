@@ -1,19 +1,21 @@
-<h1>商品列表</h1>
+<h1><%= t("products.page_title.list") %></h1>
 <table>
   <thead>
     <tr>
-      <th scope='col'>商品名稱</th>
+      <th scope='col'><%= t("products.page_title.product") %></th>
+      <th scope='col'><%= t("products.page_title.images") %></th>
       <th scope='col'><%= sortable "list_price" %></th>
       <th scope='col'><%= sortable "sell_price" %></th>
-      <th scope='col'>查看</th>
+      <th scope='col'></th>
     </tr>
   </thead>
-  <% @products.each do |product| %>
+  <% @products.with_attached_images.each do |product| %>
     <tbody>
       <td><%= product.name %></td>
+      <td><%= cover_image_tag(product, 100, 100) %></td>
       <td><%= product.list_price %></td>
       <td><%= product.sell_price %></td>
-      <td><%= link_to '查看', product_path(product) %></td>
+      <td><%= link_to t("products.links.show"), product_path(product) %></td>
     </tbody>
   <% end %>
 </table>

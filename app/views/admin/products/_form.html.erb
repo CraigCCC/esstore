@@ -8,60 +8,60 @@
 
 <%= form_with model: [:admin, product], local: true do |f| %>
 <div>
-  <% product.with_attached_images.images.each do |image| %>
+  <% product.images.each do |image| %>
     <%= cover_image_tag(image, 300, 300, multiple_image: true)%>
-    <% f.hidden_field :images, multiple: true, value: image.signed_id %>
-    <%= link_to '刪除圖片', destroy_image_admin_product_path(image.id), method: :delete %>
+    <%= link_to t("products.links.delete_image"), destroy_image_admin_product_path(image.id), method: :delete %>
+    <%= f.hidden_field :images, multiple: true, value: image.signed_id %>
   <% end %>
 </div>
 
   <div>
-    <%= f.label :images, '上傳圖檔' %>
+    <%= f.label :images, t("products.upload_images") %>
     <%= f.file_field :images, multiple: true, direct_upload: true %>
   </div>
 
   <div>
-    <%= f.label :name, '產品名稱' %>
+    <%= f.label :name, t("products.page_title.task") %>
     <%= f.text_field :name %>
   </div>
 
   <div>
-    <%= f.label :list_price, '售價' %>
+    <%= f.label :list_price, t("products.list_price") %>
     <%= f.number_field :list_price %>
   </div>
 
   <div>
-    <%= f.label :sell_price, '特價' %>
+    <%= f.label :sell_price, t("products.sell_price") %>
     <%= f.number_field :sell_price %>
   </div>
 
   <div>
-    <%= f.label :quantity, '數量' %>
+    <%= f.label :quantity, t("products.quantity") %>
     <%= f.number_field :quantity %>
   </div>
 
   <div>
-    <%= f.label :sku, 'SKU' %>
+    <%= f.label :sku, t("products.sku") %>
     <%= f.text_field :sku %>
   </div>
 
     <div>
-    <%= f.label :status, '產品狀態' %>
+    <%= f.label :status, t("products.status.status") %>
     <%= f.radio_button :status, 'off_sell', checked: true %>
-    <%= f.label :status, '下架' %>
+    <%= f.label :status, t("products.off_sell") %>
     <%= f.radio_button :status, 'on_sell' %>
-    <%= f.label :status, '上架' %>
+    <%= f.label :status, t("products.on_sell") %>
     <%= f.radio_button :status, 'restocking' %>
-    <%= f.label :status, '進貨中' %>
+    <%= f.label :status, t("products.restocking") %>
   </div>
 
   <div>
-    <%= f.label :describle, '產品敘述' %>
+    <%= f.label :describle, t("products.describle") %>
     <%= f.text_area :describle %>
   </div>
 
   <div>
-    <%= f.submit %>
-    <%= link_to '取消', admin_products_path %>
+    <%= f.submit t("products.links.submit") %>
+    <%= link_to t("products.links.cancel"), admin_products_path %>
   </div>
 <% end %>

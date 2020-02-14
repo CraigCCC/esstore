@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
+# Centralization of locale data collection for Ruby on Rails.
+gem 'rails-i18n', '~> 6.0'
